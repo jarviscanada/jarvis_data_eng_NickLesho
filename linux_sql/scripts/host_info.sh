@@ -13,17 +13,17 @@ if [ $# -ne 5 ]; then
 
 vmstat_mb=$(vmstat --unit M)
 hostname=$(hostname -f)
-id = 1
+id=1
 
 cpu_number=$(lscpu | egrep "^CPU\(s\):" | awk '{print $2}' | xargs)
 cpu_architecture=$(lscpu | egrep "^Architecture:" | awk '{print $2}' | xargs)
 cpu_model=$(lscpu  | egrep "^Model:" | awk '{print $2}' | xargs)
-cpu_mhz=$(lscpu | egrep "^CPU MHz:" | awk '{print $2}' | xargs)
-l2_cache=$(lscpu | egrep "^L2 cache:" | awk '{print $2}' | xargs)
-total_mem= $(cat /proc/meminfo | grep MemTotal | awk '{print $2}' | xargs)
-timestamp=$(vmstat -t | awk '{print $18 $19}'| tail -n1 | xargs)
+cpu_mhz=$(lscpu | egrep "^CPU MHz:" | awk '{print $3}' | xargs)
+l2_cache=$(lscpu | egrep "^L2 cache:" | awk '{print $3}' | cut -c -3 | xargs)
+total_mem=$(cat /proc/meminfo | grep MemTotal | awk '{print $2}' | xargs)
+timestamp=$(vmstat -t | awk '{print $18" "$19}'| tail -n1 | xargs)
 
-insert_stmt="INSERT INTO host_info(id, hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, timestamp) VALUES('$id, $hostname, $cpu_number, $cpu_architecture, $cpu_model, $cpu_mhz, $L2_cache, $total_mem, $timestamp')";
+insert_stmt="INSERT INTO host_info (id, hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, L2_cache, total_mem, timestamp) VALUES ('$id', '$hostname', '$cpu_number', '$cpu_architecture', '$cpu_model', '$cpu_mhz', '$l2_cache', '$total_mem', '$timestamp')";
 
 export PGPASSWORD=$psql_password
 psql -h $psql_host -p $psql_port -d $db_name -U $psql_user -c "$insert_stmt"
