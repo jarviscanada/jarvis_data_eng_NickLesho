@@ -1,0 +1,123 @@
+# Preferred name (Characters only)
+name: "Nick Lesho"
+# Your GitHub repo root URL
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_NickLesho
+
+# Introduce yourself, your academic and professional background.
+# What excites you about the software industry and your passion. At least 80 words
+summary: I graduated with a Computer Science and Economics degree from the University of Toronto in June of 2021. Upon graduating, I worked as part of a 3-month contract for Canadian Musicians Co-operative as a Computer Systems Analyst. My duties included web development, IT support, and debugging an Android application. Currently, I am a technical consultant at Jarvis. I am passionate about web development, with proficiency in both front-end and back-end web development. I am especially passionate about using technical skills to solve problems for a wide variety of stakeholders. With the tech industry constantly changing and evolving, I am excited about learning and using all the new technologies that will unfold.
+
+# Group your skills by level.
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+skills:
+  # At least 5 skills
+  proficient:
+    - HTML
+    - CSS
+    - JavaScript
+    - Python
+    - Java
+    - Linux/Bash
+    - RDBMS / SQL
+    - Agile / Scrum
+    - Git
+  # At least 5 skills
+  competent:
+    - React
+    - Bootstrap
+    - TypeScript
+    - Django
+    - REST API
+    - Chrome Develoer Tools
+    - Wix
+  # At least 5 skills
+  familiar:
+    - Angular.js
+    - Vue.js
+    - Spring Boot
+    - Node.js
+    - Express.js
+    - MongoDB
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Developed a program that provides information on hardware specifications, and real-time resource usage (such as CPU and memory) for each node within a system of nodes/servers connected through a network switch. The information is stored and retrieved from an RDBMS. Docker is used to provision the database and a psql instance is used to store all the data. A bash agent is used to gather server usage data and insert it into the database. The bash agent is composed of two bash scripts. The host_info.sh bash script inserts the host hardware info into the database and is run once. The host_usage.sh bash script collects the current host usage and inserts it into the database. It is run every minute using crontab. All of the source code is available on the project's GitHub repository.
+ # - name: "Core Java Apps"
+ #   git_url: "/core_java"
+ #   description:
+ #     - "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+ #     - "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+ #     - "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+ # - name: "Springboot App"
+ #   git_url: "/springboot"
+ #   description: ""
+ # - name: "Python Data Analytics"
+ #   git_url: "/python_data_anlytics"
+ #   description: ""
+ # - name: "Hadoop"
+ #   git_url: "/hadoop"
+ #   description: ""
+ # - name: "Spark"
+ #   git_url: "/spark"
+ #   description: ""
+ # - name: "Cloud/DevOps"
+ #   git_url: "/cloud_devops"
+ #   description: ""
+
+# List of personal or academic projects
+# Feel free to add more projects
+highlighted_projects:
+    #project name
+  - name: "MindType mind-controlled keyboard"
+    #URL is optional
+    #git_url: "https://github.com/jarviscanada/jarvis_profile_builder"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Developed the user interface and front-end functionality of a mind-controlled keyboard using HTML, CSS, JavaScript, and React. Worked in an Agile environment and used GitHub to collaborate on the project and Slack to communicate.
+
+#List of professional experience
+#The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional experience rather than training.
+  - title: "Software Developer"
+    company: "Jarvis"
+    duration: "December 2021 - present"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "Implemented a solution for recording and retrieving hardware specification and resource usage using an RDBMS and bash scripts. Regularly attended daily scrum meeting to discuss progress with team members."
+
+#List of edcuation
+education: 
+  - school_name: "University of Toronto"
+    duration: "2013-2021"
+    degree: "Bachelor of Science"
+    department: "Computer Science and Economics"
+    # optional
+    awards_achievements:
+    #  - "Scholarship"
+    #  - "Dean's List (2015, 2016): Ut enim ad minim veniam"
+    #  - "GPA: 3.8/4.0"
+
+
+
+#Optional section
+others:
+  - title: "N/A"
+    bullets:
+        - "N/A"
+    #category
+#  - title: #"Certificates"
+    #list of items
+#    bullets:
+#      - "Udacity Machine Learning (2019)"
+#  - title: "Awards"
+#    bullets:
+#      - "Winner"
+#  - title: #"Activities/Hobbies"
+#    bullets:
+#      - "Basketball player"
+#      - "Competitive gaming"
+#      - "Volunteer, ABC Food bank: Ut enim ad minim veniam"
