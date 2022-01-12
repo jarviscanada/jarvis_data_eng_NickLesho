@@ -6,7 +6,7 @@ I graduated with a Computer Science and Economics degree from the University of 
 
 **Proficient:** HTML, CSS, JavaScript, Python, Java, Linux/Bash, RDBMS / SQL, Agile / Scrum, Git
 
-**Competent:** React, Bootstrap, TypeScript, Django, REST API, Chrome Develoer Tools, Wix
+**Competent:** React, Bootstrap, TypeScript, Django, REST API, Chrome Developer Tools, Wix
 
 **Familiar:** Angular.js, Vue.js, Spring Boot, Node.js, Express.js, MongoDB
 
@@ -32,4 +32,5 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_NickLesho]
 
 
 ## Miscellaneous
-- N/A
+- Webmaster for U of T Women in Computer Science, September 2019 - April, 2021
+- Front End Web Developer at NeurotechUofT, February 2018 - April 2019
