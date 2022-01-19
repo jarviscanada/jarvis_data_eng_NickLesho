@@ -1,4 +1,4 @@
-package ca.jrvs.apps.practice;
+package main.ca.jrvs.apps.practice;
 
 class HelloWorld {
 
@@ -8,3 +8,4 @@ class HelloWorld {
     System.out.println("Hello, World");
   }
 }
+

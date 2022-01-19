@@ -1,3 +1,10 @@
+package ca.jrvs.apps.grep;
+
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.io.File;
+import java.io.IOException;
+
 public interface JavaGrep {
 
     /**
@@ -9,22 +16,23 @@ public interface JavaGrep {
     /**
      * Traverse a given directory and return all files
      * @param rootDir
-     * @return
+     * @return files under the rot dir
      */
-    List<file> listFiles(String rootDir);
+    List<File> listFiles(String rootDir);
 
     /**
-     * Read a file and return all the lines.
+     * Read a file and return all the lines. (Use FileReader, BufferedReader, CharacterEncoding)
      *
      * @param inputFile
-     * @return
+     * @return lines
+     * @throws IllegalArgumentException if the given inputFile is not a file
      */
-    List<String> readLines(File inputFile);
+    List<String> readLines(File inputFile) throws IllegalArgumentException, FileNotFoundException, IOException;
 
     /**
      * check if a line contains the regex pattern (passed by user)
      * @param line
-     * @return
+     * @return true if there is a match
      */
     boolean containsPattern(String line);
 
