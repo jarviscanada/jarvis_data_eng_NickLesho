@@ -32,9 +32,19 @@ public class JavaGrepImp implements JavaGrep {
     @Override
     public void setRootPath(String rootPath) { this.rootPath = rootPath; }
 
+    /**
+     * check if a line contains the regex pattern (passed by user)
+     * @param line
+     * @return true if there is a match
+     */
     @Override
     public boolean containsPattern(String line) { return Pattern.matches(getRegex(), line); }
 
+    /**
+     * Traverse a given directory and return all files
+     * @param rootDir
+     * @return files under the rot dir
+     */
     @Override
     public List<File> listFiles(String rootDir) {
         File folder = new File(rootDir);
@@ -52,7 +62,13 @@ public class JavaGrepImp implements JavaGrep {
         }
         return files;
     }
-
+    /**
+     * Read a file and return all the lines. (Use FileReader, BufferedReader, CharacterEncoding)
+     *
+     * @param inputFile
+     * @return lines
+     * @throws IllegalArgumentException if the given inputFile is not a file
+     */
     @Override
     public List<String> readLines(File inputFile) throws IllegalArgumentException, FileNotFoundException, IOException {
         List<String> lines = new ArrayList<String>();
@@ -66,6 +82,11 @@ public class JavaGrepImp implements JavaGrep {
         return lines;
     }
 
+    /**
+     * Write lines to a file
+     * @param lines
+     * @throws IOException
+     */
     @Override
     public void writeToFile(List<String> lines) throws IOException{
         PrintWriter pw = new PrintWriter(new FileWriter(getOutFile()));
@@ -75,6 +96,10 @@ public class JavaGrepImp implements JavaGrep {
         pw.close();
     }
 
+    /**
+     * Top level search workflow
+     * @throws IOException
+     */
     @Override
     public void process() throws IOException {
         List<String> matchedLines = new ArrayList<String>();
