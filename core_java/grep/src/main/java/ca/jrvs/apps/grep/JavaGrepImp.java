@@ -63,7 +63,7 @@ public class JavaGrepImp implements JavaGrep {
         return files;
     }
     /**
-     * Read a file and return all the lines. (Use FileReader, BufferedReader, CharacterEncoding)
+     * Read a file and return all the lines.
      *
      * @param inputFile
      * @return lines
