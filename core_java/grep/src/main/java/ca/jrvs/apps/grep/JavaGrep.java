@@ -18,10 +18,10 @@ public interface JavaGrep {
      * @param rootDir
      * @return files under the rot dir
      */
-    List<File> listFiles(String rootDir);
+    List<File> listFiles(String rootDir) throws IOException;
 
     /**
-     * Read a file and return all the lines. (Use FileReader, BufferedReader, CharacterEncoding)
+     * Read a file and return all the lines.
      *
      * @param inputFile
      * @return lines

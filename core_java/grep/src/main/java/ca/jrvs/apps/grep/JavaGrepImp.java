@@ -46,7 +46,7 @@ public class JavaGrepImp implements JavaGrep {
      * @return files under the rot dir
      */
     @Override
-    public List<File> listFiles(String rootDir) {
+    public List<File> listFiles(String rootDir) throws IOException {
         File folder = new File(rootDir);
         File[] filesList = folder.listFiles();
         List<File> files = new ArrayList<File>();
@@ -63,7 +63,7 @@ public class JavaGrepImp implements JavaGrep {
         return files;
     }
     /**
-     * Read a file and return all the lines. (Use FileReader, BufferedReader, CharacterEncoding)
+     * Read a file and return all the lines.
      *
      * @param inputFile
      * @return lines
