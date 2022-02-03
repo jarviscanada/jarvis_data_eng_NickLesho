@@ -13,7 +13,7 @@ if [ $# -ne 5 ]; then
 
 vmstat_mb=$(vmstat --unit M)
 hostname=$(hostname -f)
-id=1
+id=$(hostid)
 
 cpu_number=$(lscpu | egrep "^CPU\(s\):" | awk '{print $2}' | xargs)
 cpu_architecture=$(lscpu | egrep "^Architecture:" | awk '{print $2}' | xargs)

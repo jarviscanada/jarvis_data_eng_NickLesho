@@ -22,7 +22,7 @@ disk_available=$(df -BM / | awk '{print $4}'| tail -n1 | cut -c -5 | xargs)
 
 timestamp=$(vmstat -t | awk '{print $18" "$19}'| tail -n1 | xargs)
 
-host_id=1;
+host_id=$(hostid);
 
 insert_stmt="INSERT INTO host_usage(timestamp, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available) VALUES('$timestamp', '$host_id', '$memory_free', '$cpu_idle', '$cpu_kernel', '$disk_io', '$disk_available')";
 
