@@ -1,17 +1,16 @@
 Introduction
 ============
-The purpose of this project is to provide information
-on hardware specifications, and real time resource usage
+This application provides information
+on hardware specifications and real-time resource usage
 (such as CPU and memory) for each node within a system of
 nodes/servers connected through a network switch.
-The information is stored and retrieved from an RDBMS.
-Docker is used to provision the database and a psql instance 
-is used to store all the data. A bash agent is used to gather 
+The information is stored and retrieved from a PostgreSQL database,
+which is provisioned using Docker. A bash agent is used to gather 
 server usage data and insert it into the database. The bash agent
-is composed of two bash scripts. The host_info.sh bash script inserts
-the host hardware info into the database and is run once. The host_usage.sh
-bash script collects the current host usage and inserts it into the 
-database. It is run every minute using crontab. All of the source code is
+consists of two bash scripts. The host_info.sh bash script inserts
+the host hardware information into the database and is run once. The host_usage.sh
+script collects the current host usage and inserts it into the 
+database, and this process is automated using crontab. All of the source code is
 available on the project's GitHub repository.
 
 Quick Start
@@ -96,12 +95,11 @@ host_usage
 
 Test
 ====
-The bash scripts were tested by the process of running the bash scripts
-on the command line. The result was that they worked successfully. The SQL queries were tested by means of running them using PSQL. They were modified until they ran successfully
+The bash scripts were tested by being run on the command line. To ensure the proper operation of the psql_docker.sh bash script, a verification was made as to whether a docker container was running. To ensure the proper operation of the host_info.sh and host_usage.sh bash scripts, a verification was made in the PSQL database to ensure that the data was properly inserted into the database. Lastly, the SQL queries were tested by means of being run on the PSQL database. They were modified until they ran successfully.
 
 Deployment
 ==========
-crontab is used to schedule the agent program, Docker is used to provision the database and GitHub is used to store and manage the source code
+The PostgreSQL database was provisioned using Docker. To automate the host_usage.sh script, crontab was used and configured with the proper cron job. GitHub is used to store and manage the source code.
 
 Improvements
 ============
