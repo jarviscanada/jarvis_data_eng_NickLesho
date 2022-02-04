@@ -1,7 +1,7 @@
 package ca.jrvs.practice.codingChallenge;
 
 public class fibonacciSolution {
-    public class Integer fibonacci(Integer position){
+    public int fibonacci(int position){
         if (position == 1 || position == 2){
             return 1;
         }
