@@ -1,6 +1,16 @@
 package ca.jrvs.apps.twitter.example.dto;
 
-import java.net.*;
+import java.lang.reflect.Array;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import oauth.signpost.OAuthConsumer;
+import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
+import org.apache.http.client.methods.HttpPost;
+import com.google.common.net.PercentEscaper;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
+
+import java.util.Arrays;
 
 public class TwitterApiTest {
     private static String CONSUMER_KEY = System.getenv("consumerKey");
@@ -22,7 +32,7 @@ public class TwitterApiTest {
         consumer.sign(request);
 
         System.out.println("Http Request Headers:");
-        Array.stream(request.getAllHeaders()).forEach(System.out::println);
+        Arrays.stream(request.getAllHeaders()).forEach(System.out::println);
 
         //send the request
         HttpClient httpClient = HttpClientBuilder.create().build();
