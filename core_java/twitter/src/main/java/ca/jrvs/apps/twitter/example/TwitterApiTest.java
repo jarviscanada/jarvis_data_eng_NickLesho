@@ -1,4 +1,4 @@
-package ca.jrvs.apps.twitter.example.dto;
+package ca.jrvs.apps.twitter.example;
 
 import java.lang.reflect.Array;
 import org.apache.http.HttpResponse;
