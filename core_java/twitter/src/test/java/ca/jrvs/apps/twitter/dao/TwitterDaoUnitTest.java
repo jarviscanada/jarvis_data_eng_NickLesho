@@ -62,4 +62,56 @@ public class TwitterDaoUnitTest {
 
     }
 
+    public void postTweet() throws Exception {
+        String tweetJsonStr = "{\n"
+                + "\"created_at\":\"Mon Feb 18 21:24:39 +0000 2019\",\n"
+                + "\"id\":1097607853932564480\",\n"
+                + "\"id_str\":\"1097607853932564480\",\n"
+                + "\text\":\"test with loc223\",\n"
+                + "\"entities\":{\n"
+                + "\"hashtags\":[],"
+                + "\"user_mentions\":[]"
+                + "},\n"
+                + "\"coordinates\":null,"
+                + "\"retweet_count\":0,\n"
+                + "\"favorite_count\":0,\n"
+                + "\"favorited\":false,\n"
+                + "\"retweeted\":false\n"
+                +"}";
+
+        when(mockHelper.httpPost(isNotNull())).thenReturn(null);
+        TwitterDao spyDao = Mockito.spy(dao);
+        Tweet expectedTweet = JsonUtil.toObjectFromJson(tweetJsonStr, Tweet.class);
+        doReturn(expectedTweet).when(spyDao).parseResponseBody(any(), anyInt());
+        Tweet tweet = spyDao.create(expectedTweet);
+        Tweet tweet2 = spyDao.findById("1097607853932564480");
+        assertEquals("same tweet id", tweet.getId(), tweet2.getId());
+    }
+
+    public void deleteTweet() throws Exception {
+        String tweetJsonStr = "{\n"
+                + "\"created_at\":\"Mon Feb 18 21:24:39 +0000 2019\",\n"
+                + "\"id\":1097607853932564480\",\n"
+                + "\"id_str\":\"1097607853932564480\",\n"
+                + "\text\":\"test with loc223\",\n"
+                + "\"entities\":{\n"
+                + "\"hashtags\":[],"
+                + "\"user_mentions\":[]"
+                + "},\n"
+                + "\"coordinates\":null,"
+                + "\"retweet_count\":0,\n"
+                + "\"favorite_count\":0,\n"
+                + "\"favorited\":false,\n"
+                + "\"retweeted\":false\n"
+                +"}";
+
+        when(mockHelper.httpPost(isNotNull())).thenReturn(null);
+        TwitterDao spyDao = Mockito.spy(dao);
+        Tweet expectedTweet = JsonUtil.toObjectFromJson(tweetJsonStr, Tweet.class);
+        doReturn(expectedTweet).when(spyDao).parseResponseBody(any(), anyInt());
+        Tweet tweet = spyDao.create(expectedTweet);
+        spyDao.deleteById("1097607853932564480");
+        AssertNull("should be null", spyDao.findById("1097607853932564480");
+    }
+
 }

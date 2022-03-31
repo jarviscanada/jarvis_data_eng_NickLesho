@@ -36,9 +36,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     public Tweet create(Tweet tweet) {
         URI uri;
         try {
-            PercentEscaper percentEscaper = new PercentEscaper("", false);
-            String status = percentEscaper.escape(tweet.getText());
-            uri = new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + status);
+            uri = getPostUri(tweet);
         } catch (URISyntaxException | UnsupportedEncodingException e) {
             throw new IllegalArgumentException("Invalid tweet input", e);
         }
@@ -49,10 +47,10 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     }
 
     @Override
-    public Tweet findById(ID id) {
+    public Tweet findById(String id) {
         URI uri;
         try {
-            uri = new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + id);
+            uri = getShowUri(id);
         } catch (URISyntaxException | UnsupportedEncodingException e) {
             throw new IllegalArgumentException("Invalid tweet input", e);
         }
@@ -63,10 +61,10 @@ public class TwitterDao implements CrdDao<Tweet, String> {
     }
 
     @Override
-    public Tweet deleteById(ID id) {
+    public Tweet deleteById(String id) {
         URI uri;
         try {
-            uri = new URI(API_BASE_URI + DELETE_PATH + QUERY_SYM + "status" + EQUAL + id);
+            uri = getDeleteUri(id);
         } catch (URISyntaxException | UnsupportedEncodingException e) {
             throw new IllegalArgumentException("Invalid tweet input", e);
         }
@@ -74,6 +72,26 @@ public class TwitterDao implements CrdDao<Tweet, String> {
         HttpResponse response = httpHelper.httpGet(uri);
 
         return parseResponseBody(response, HTTP_OK);
+    }
+
+    private URI getPostUri(Tweet tweet) throws URISyntaxException {
+        PercentEscaper percentEscaper = new PercentEscaper("", false);
+        String text = tweet.getText();
+        String postStr = API_BASE_URI + POST_PATH + QUERY_SYM + "status" + EQUAL + percentEscaper.escape(text);
+        URI uri = new URI(postStr);
+        return uri;
+    }
+
+    private URI getShowUri(String id) throws URISyntaxException {
+        String showStr = API_BASE_URI + SHOW_PATH + QUERY_SYM + "id" + EQUAL + id;
+        URI uri = new URI(showStr);
+        return uri;
+    }
+
+    private URI getDeleteUri(String id) throws URISyntaxException {
+        String deleteStr = API_BASE_URI + DELETE_PATH + QUERY_SYM + "id" + EQUAL + id;
+        URI uri = new URI(deleteStr);
+        return uri;
     }
 
 
