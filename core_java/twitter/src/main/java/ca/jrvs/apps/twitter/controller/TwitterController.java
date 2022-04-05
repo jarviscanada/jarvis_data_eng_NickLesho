@@ -4,6 +4,8 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.Service;
 import com.xkcoding.http.util.StringUtil;
 
+import java.util.ArrayList;
+
 public class TwitterController {
 
     private static final String COORD_SEP = ":";
@@ -34,6 +36,16 @@ public class TwitterController {
 
         Tweet postTweet = buildTweet(tweet_txt, lon, lat);
         return service.postTweet(postTweet);
+    }
+
+    public Tweet showTweet(String[] args) {
+        if (args.length != 3) {
+            throw new IllegalArgumentException("USAGE: TwitterCLIApp show \"id\" \"fields\"");
+        }
+        String id = args[1];
+        String field = args[2];
+        String[] fieldArray = field.split(COORD_SEP);
+        return service.showTweet(id, fieldArray);
     }
 
 }
