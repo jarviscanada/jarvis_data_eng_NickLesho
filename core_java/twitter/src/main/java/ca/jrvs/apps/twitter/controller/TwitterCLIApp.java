@@ -8,16 +8,19 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.Service;
 import ca.jrvs.apps.twitter.service.TwitterService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.naming.ldap.Control;
 import java.util.Locale;
 
+@Component
 public class TwitterCLIApp {
 
     public static final String USAGE = "USAGE: TwitterCLIApp post|show|delete [options]";
 
     private Controller controller;
 
+    @Autowired
     public TwitterCLIApp(Controller controller) {this.controller = controller;}
 
     public static void main(String[] args) {

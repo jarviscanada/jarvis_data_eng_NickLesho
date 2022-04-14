@@ -12,8 +12,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 
 import java.net.URI;
-import java.lang.Object.JsonUtil;
+import org.springframework.xd.shell.util.JsonUtil;
 
+@Repository
 public class TwitterDao implements CrdDao<Tweet, String> {
 
     private static final String API_BASE_URI = "http://api.twitter.com";

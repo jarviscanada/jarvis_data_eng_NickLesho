@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import org.springframework.xd.shell.util.JsonUtil;
+import org.springframework.cloud.fn.common.twitter.util.TweetUtil;
+
 
 public class TwitterDaoIntTest {
 
@@ -43,6 +46,36 @@ public class TwitterDaoIntTest {
 
         assertTrue(hashTag.contains(tweet.getEntities().getHashtags().get(0).getText()));
 
+    }
+
+    @Test
+    public void findById() throws Exception {
+        String hashTag = "#abc";
+        String text = "@someone sometext " + hashTag + " " + System.currentTimeMillis();
+        Double lat = 1d;
+        Double lon = -1d;
+        Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
+        System.out.println(JsonUtil.toPrettyJson(postTweet));
+
+        Tweet tweet = dao.create(postTweet);
+        Tweet tweet2 = dao.findById(tweet.getIdStr());
+        assertEquals(tweet.getText(), tweet2.getText());
+        assertEquals(tweet.getId(), tweet2.getId());
+
+    }
+
+    @Test
+    public void deleteById() throws Exception {
+        String hashTag = "#abc";
+        String text = "@someone sometext " + hashTag + " " + System.currentTimeMillis();
+        Double lat = 1d;
+        Double lon = -1d;
+        Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
+        System.out.println(JsonUtil.toPrettyJson(postTweet));
+
+        Tweet tweet = dao.create(postTweet);
+        Tweet tweet2 = dao.findById(tweet.getIdStr());
+        AssertNull("should be null", spyDao.findById(tweet.getIdStr());
     }
 
 }

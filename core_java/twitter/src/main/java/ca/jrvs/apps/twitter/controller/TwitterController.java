@@ -3,9 +3,11 @@ package ca.jrvs.apps.twitter.controller;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.Service;
 import com.xkcoding.http.util.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 
+@org.springframework.stereotype.Controller
 public class TwitterController {
 
     private static final String COORD_SEP = ":";
@@ -13,6 +15,7 @@ public class TwitterController {
 
     private Service service;
 
+    @Autowired
     public TwitterController(Service service) {this.service = service;}
 
     public Tweet postTweet(String[] args) {

@@ -9,6 +9,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@org.springframework.stereotype.Service
 public class TwitterService implements Service {
     private CrdDao dao;
 
@@ -28,7 +29,7 @@ public class TwitterService implements Service {
     @Override
     public Tweet showTweet(String id, String[] fields) throws IllegalArgumentException {
         Tweet tweet = (Tweet) dao.findById(id);
-        ArrayList<String> validFields = ["created_at", "id", "id_str", "text", "entities", "coordinates", "retweet_count", "favorite_count", "favorited", "retweeted"];
+        ArrayList<String> validFields = {"created_at", "id", "id_str", "text", "entities", "coordinates", "retweet_count", "favorite_count", "favorited", "retweeted"};
         if (tweet == null) {
             throw new IllegalArgumentException("invalid ID");
         }
@@ -41,9 +42,6 @@ public class TwitterService implements Service {
         if (!(fieldList.contains("created_at"))) {
             tweet.setCreatedAt(null);
         }
-        if (!(fieldList.contains("id"))) {
-            tweet.setId(null);
-        }
         if (!(fieldList.contains("id_str"))) {
             tweet.setIdStr(null);
         }
@@ -55,18 +53,6 @@ public class TwitterService implements Service {
         }
         if (!(fieldList.contains("coordinates"))) {
             tweet.setCoordinates(null);
-        }
-        if (!(fieldList.contains("retweet_count"))) {
-            tweet.setRetweetCount(null);
-        }
-        if (!(fieldList.contains("favorite_count"))) {
-            tweet.setFavoriteCount(null);
-        }
-        if (!(fieldList.contains("favorited"))) {
-            tweet.setFavorited(null);
-        }
-        if (!(fieldList.contains("retweeted"))) {
-            tweet.setRetweeted(null);
         }
 
         return tweet;

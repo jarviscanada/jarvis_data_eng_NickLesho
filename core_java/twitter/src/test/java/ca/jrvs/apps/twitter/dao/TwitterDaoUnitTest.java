@@ -10,8 +10,12 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.isNotNull;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
+
+import org.springframework.xd.shell.util.JsonUtil;
+import org.springframework.cloud.fn.common.twitter.util.TweetUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TwitterDaoUnitTest {
@@ -84,7 +88,7 @@ public class TwitterDaoUnitTest {
         Tweet expectedTweet = JsonUtil.toObjectFromJson(tweetJsonStr, Tweet.class);
         doReturn(expectedTweet).when(spyDao).parseResponseBody(any(), anyInt());
         Tweet tweet = spyDao.create(expectedTweet);
-        Tweet tweet2 = spyDao.findById("1097607853932564480");
+        Tweet tweet2 = spyDao.findById(tweet.getIdStr());
         assertEquals("same tweet id", tweet.getId(), tweet2.getId());
     }
 
@@ -110,8 +114,8 @@ public class TwitterDaoUnitTest {
         Tweet expectedTweet = JsonUtil.toObjectFromJson(tweetJsonStr, Tweet.class);
         doReturn(expectedTweet).when(spyDao).parseResponseBody(any(), anyInt());
         Tweet tweet = spyDao.create(expectedTweet);
-        spyDao.deleteById("1097607853932564480");
-        AssertNull("should be null", spyDao.findById("1097607853932564480");
+        spyDao.deleteById(tweet.getIdStr());
+        AssertNull("should be null", spyDao.findById(tweet.getIdStr());
     }
 
 }
